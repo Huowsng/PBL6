@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+</head>
+<body>
+    <h1>Anh vừa tải lên</h1>
+    <img id="originalImage" src="" alt="Original Image">
+
+    <h1>Processed Image</h1>
+    <img id="processedImage" src="" alt="Processed Image" width="400" height="auto">
+    <button><a href="convert.html" class="nav-link-4">Back</a></button>
+
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    // Đường dẫn của máy chủ
+    const serverUrl = 'http://localhost:4000';
+
+    const originalImageUrl = `${serverUrl}/LR-input/lr_image.png`;
+    const originalImage = document.getElementById('originalImage');
+
+    // Đường dẫn đến ảnh đã xử lý trên máy chủ
+    const processedImageUrl = `${serverUrl}/processed-image`;
+
+    // Lấy thẻ <img> theo ID
+    const processedImage = document.getElementById('processedImage');
+
+    // Gán đường dẫn ảnh vào thuộc tính src của thẻ <img>
+    processedImage.src = processedImageUrl;
+});
+
+</script>
+</html>

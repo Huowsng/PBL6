@@ -54,6 +54,17 @@ app.post("/upload", (req, res) => {
   });
 });
 
+app.get("/original-image", (req, res) => {
+  const imagePath = path.resolve(__dirname, originalImagePath);
+  res.sendFile(imagePath);
+})
+
+// load anh http://localhost:4000/processed-image
+app.get("/processed-image", (req, res) => {
+  const imagePath = path.resolve(__dirname, output_file_path);
+  res.sendFile(imagePath);
+});
+
 app.get("/getNewImage", (req, res) => {
   // Đường dẫn của file mới sau khi xử lý
   const processedFilePath = path.resolve(__dirname, output_file_path);

@@ -1,6 +1,11 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import './convert.css';
+//
+import Magnifier from "react-magnifier";
+
+
+
 function Convert() {
 
 useEffect(() => {
@@ -71,33 +76,74 @@ function imageUpload() {
     form_data.append("data1", "hello");
     console.log(form_data.get('image'));
 
-    axios.post('http://localhost:4000/upload', form_data)
-        .then((response) => {
-            console.log(response.data);
-            const res_div = document.getElementById("result-div");
-            res_div.style.display = "block";
-            const image = new Image();
-            image.src = "data:image/png;base64, " + response.data.image_data;
-            const url = image.src.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
+    // axios.post('http://localhost:4000/upload', form_data)
+    //     .then((response) => {
+    //         console.log(response.data);
+    //         const res_div = document.getElementById("result-div");
+    //         res_div.style.display = "block";
+    //         const image = new Image();
+    //         image.src = "data:image/png;base64, " + response.data.image_data;
+    //         const url = image.src.replace(/^data:image\/[^;]+/, 'data:image/png;base64,');
 
-            res_div.appendChild(image);
-            console.log(image);
-            res_div.innerHTML += "<a download='SRGAN_Output.png' href=" + url + ">Download</a>";
-        }, (error) => {
-            console.log(error);
-        });
+    //         res_div.appendChild(image);
+    //         console.log(image);
+    //         res_div.innerHTML += "<a download='SRGAN_Output.png' href='" + url + "'>Download</a>";
+    //     }, (error) => {
+    //         console.log(error);
+    //     });
+    axios.post('http://localhost:4000/upload', form_data)
+  .then((response) => {
+    console.log(response.data);
+
+    const res_div = document.getElementById("result-div");
+    res_div.style.display = "block";
+
+    // Display the image from the response of the POST request
+    const image = new Image();
+    image.src = "data:image/png;base64, " + response.data.image_data;
+    const url = image.src.replace(/^data:image\/[^;]+/, 'data:image/png;base64,');
+    res_div.appendChild(image);
+    //var src image
+    console.log(image);
+
+    
+    
+    //
+    const magnifierElement = document.getElementById('yourMagnifierId');
+    const newImageSource = 'path/to/your/new/image.jpg';
+    magnifierElement.src = newImageSource;
+    // Download link for the image from the POST request
+    // res_div.innerHTML += "<a download='SRGAN_Output.png' href='" + url + "'>Download</a>";
+
+    // Request the processed image using axios.get
+    axios.get('http://localhost:4000/processed-image', { responseType: 'blob' })
+      .then((imageResponse) => {
+        // Assuming the image data is directly the Blob data
+        const processedImageBlob = imageResponse.data;
+
+        // Create a download link for the processed image
+        const processedImageUrl = URL.createObjectURL(processedImageBlob);
+        res_div.innerHTML += `<br>`;
+
+        res_div.innerHTML += `<a download='Processed_Image.png' href='${processedImageUrl}'>Download</a>`;
+      })
+      .catch((error) => {
+        console.log("Error fetching processed image:", error);
+      });
+  })
+  .catch((error) => {
+    console.log("Error with the POST request:", error);
+  });
+
 }
 //processed
-const serverUrl = 'http://localhost:4000';
+  // const serverUrl = 'http://localhost:4000';
 
-useEffect(() => {
-  // Đường dẫn của ảnh đã xử lý trên máy chủ
-  const processedImageUrl = `${serverUrl}/processed-image`;
-  const processedImage = document.getElementById('processedImage');
-
-  // Gán đường dẫn ảnh vào thuộc tính src của thẻ <img>
-  processedImage.src = processedImageUrl;
-}, []); // Thêm mảng trống để đảm bảo useEffect chỉ chạy một lần
+  //   useEffect(() => {
+  //     const processedImageUrl = `${serverUrl}/processed-image`;
+  //     const processedImage = document.getElementById('processedImage');
+  //     processedImage.src = processedImageUrl;
+  //   }, []); 
   return (
     <div className="convert_form">
       <div className="upload_image">
@@ -118,20 +164,22 @@ useEffect(() => {
           </form>
           <div className="convert_Btn">
             <button className="button-2 w-button" onClick={imageUpload}>Convert Image</button>
-            <div id="result-div">
-                
-            </div>
           </div>
       </div>
 
       <div className="processed_image">
         <div className="processed_form">
             <p>Super Resolve</p>
-            <div>
-                <img id="processedImage" src="" alt="Processed Image" />
-            </div>
-            </div>
-        </div>
+              <div className="processed_Image">
+                  {/* <img id="processedImage" src="" alt="Processed Image" />
+                  <p>result</p> */}
+                <div className="result" >
+                  <div id="result-div" >
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
     </div>
   )
 }
