@@ -1,0 +1,10 @@
+.container{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 50px;
+   background-color: #333 !important;  
+}
+.magnifier_z{
+    background-color: aqua;
+}
