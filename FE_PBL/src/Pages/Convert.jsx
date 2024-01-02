@@ -79,7 +79,7 @@ function Convert() {
     form_data.append("data1", "hello");
     console.log(form_data.get('image'));
 
-    // axios.post('http://localhost:4000/upload', form_data)
+    // axios.post('https://4732-2402-800-6205-3a3b-6166-5faf-15f4-8444.ngrok-free.app/upload', form_data)
     //     .then((response) => {
     //         console.log(response.data);
     //         const res_div = document.getElementById("result-div");
@@ -94,7 +94,7 @@ function Convert() {
     //     }, (error) => {
     //         console.log(error);
     //     });
-    axios.post('http://localhost:4000/upload', form_data)
+    axios.post('https://4732-2402-800-6205-3a3b-6166-5faf-15f4-8444.ngrok-free.app/upload', form_data)
       .then((response) => {
         console.log(response.data);
 
@@ -110,7 +110,7 @@ function Convert() {
         // res_div.innerHTML += "<a download='SRGAN_Output.png' href='" + url + "'>Download</a>";
 
         // Request the processed image using axios.get
-        axios.get('http://localhost:4000/processed-image', { responseType: 'blob' })
+        axios.get('https://4732-2402-800-6205-3a3b-6166-5faf-15f4-8444.ngrok-free.app/processed-image', { responseType: 'blob' })
           .then((imageResponse) => {
             // Assuming the image data is directly the Blob data
             const processedImageBlob = imageResponse.data;
@@ -131,7 +131,7 @@ function Convert() {
 
   }
   //processed
-  // const serverUrl = 'http://localhost:4000';
+  // const serverUrl = 'https://4732-2402-800-6205-3a3b-6166-5faf-15f4-8444.ngrok-free.app';
 
   //   useEffect(() => {
   //     const processedImageUrl = `${serverUrl}/processed-image`;
