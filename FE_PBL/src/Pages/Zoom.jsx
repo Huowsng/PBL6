@@ -4,7 +4,7 @@ import './zoom.css'
 
 
 function Zoom() {
-    const serverUrl = 'https://8023-2001-ee0-293-22d4-f8a1-fcd6-7790-6bf3.ngrok-free.app';
+    const serverUrl = 'https://323a-2001-ee0-293-22d4-8007-aa58-44a3-de97.ngrok-free.app';
 
     const processedImageUrl = `${serverUrl}/processed-image`;
     return (

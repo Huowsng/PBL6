@@ -79,7 +79,7 @@ function Convert() {
     form_data.append("data1", "hello");
     console.log(form_data.get('image'));
 
-    // axios.post('https://8023-2001-ee0-293-22d4-f8a1-fcd6-7790-6bf3.ngrok-free.app/upload', form_data)
+    // axios.post('https://323a-2001-ee0-293-22d4-8007-aa58-44a3-de97.ngrok-free.app/upload', form_data)
     //     .then((response) => {
     //         console.log(response.data);
     //         const res_div = document.getElementById("result-div");
@@ -94,7 +94,7 @@ function Convert() {
     //     }, (error) => {
     //         console.log(error);
     //     });
-    axios.post('https://8023-2001-ee0-293-22d4-f8a1-fcd6-7790-6bf3.ngrok-free.app/upload', form_data)
+    axios.post('https://323a-2001-ee0-293-22d4-8007-aa58-44a3-de97.ngrok-free.app/upload', form_data)
       .then((response) => {
         console.log(response.data);
 
@@ -110,7 +110,7 @@ function Convert() {
         // res_div.innerHTML += "<a download='SRGAN_Output.png' href='" + url + "'>Download</a>";
 
         // Request the processed image using axios.get
-        axios.get('https://8023-2001-ee0-293-22d4-f8a1-fcd6-7790-6bf3.ngrok-free.app/processed-image', { responseType: 'blob' })
+        axios.get('https://323a-2001-ee0-293-22d4-8007-aa58-44a3-de97.ngrok-free.app/processed-image', { responseType: 'blob' })
           .then((imageResponse) => {
             // Assuming the image data is directly the Blob data
             const processedImageBlob = imageResponse.data;
@@ -131,7 +131,7 @@ function Convert() {
 
   }
   //processed
-  // const serverUrl = 'https://8023-2001-ee0-293-22d4-f8a1-fcd6-7790-6bf3.ngrok-free.app';
+  // const serverUrl = 'https://323a-2001-ee0-293-22d4-8007-aa58-44a3-de97.ngrok-free.app';
 
   //   useEffect(() => {
   //     const processedImageUrl = `${serverUrl}/processed-image`;
