@@ -4,7 +4,7 @@ import React from "react";
 import { BrowserRouter as Routes, Route, Link } from "react-router-dom";
 import './home.css'
 function Home() {
-  const serverUrl = 'https://4732-2402-800-6205-3a3b-6166-5faf-15f4-8444.ngrok-free.app';
+  const serverUrl = 'https://8023-2001-ee0-293-22d4-f8a1-fcd6-7790-6bf3.ngrok-free.app';
   const processedImageUrl = `${serverUrl}/processed-image`;
   return (
     <>

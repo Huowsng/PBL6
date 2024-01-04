@@ -59,7 +59,7 @@ app.get("/original-image", (req, res) => {
   res.sendFile(imagePath);
 })
 
-// load anh https://4732-2402-800-6205-3a3b-6166-5faf-15f4-8444.ngrok-free.app/processed-image
+// load anh https://8023-2001-ee0-293-22d4-f8a1-fcd6-7790-6bf3.ngrok-free.app/processed-image
 app.get("/processed-image", (req, res) => {
   const imagePath = path.resolve(__dirname, output_file_path);
   res.sendFile(imagePath);
